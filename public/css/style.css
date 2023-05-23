@@ -1,0 +1,162 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+li {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+li:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease-in-out;
+}
+
+li:before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 5px;
+  background-color: #333;
+  border-radius: 50%;
+}
+
+li span {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+li .price {
+  display: block;
+  margin-bottom: 5px;
+  margin-top: auto;
+}
+
+form1 {
+  margin: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 200px;
+  margin-left: 500px;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.description {
+  width: 50%; /* Adjust the width as needed */
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.actions a,
+.actions button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.actions a {
+  background-color: #3498db;
+  color: #fff;
+  text-decoration: none;
+}
+
+.actions button {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+
+button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 500px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+  /* Adjust the styles for screens up to 768px wide */
+  ul {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  input[type="text"],
+  input[type="password"],
+  select {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  button {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Adjust the styles for screens up to 480px wide */
+  ul {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+

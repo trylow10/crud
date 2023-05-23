@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+</head>
+<body>
+  <h1>Welcome <%= user.username %>!</h1>
+  <% if (user.role === 'admin') { %>
+    <a href="/add-product">Add Product</a>
+  <% } %>
+  <a href="/logout">Logout</a>
+</body>
+</html>
