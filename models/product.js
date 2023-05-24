@@ -1,59 +1,63 @@
-const pool = require('../db');
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
 class Product {
   static async create(product) {
-    const query =
-      'INSERT INTO products (name, description, price) VALUES ($1, $2, $3) RETURNING *';
-    const values = [product.name, product.description, product.price];
-
     try {
-      const result = await pool.query(query, values);
-      return result.rows[0];
+      const createdProduct = await prisma.product.create({
+        data: {
+          name: product.name,
+          description: product.description,
+          price: product.price,
+        },
+      });
+      return createdProduct;
     } catch (error) {
       throw error;
     }
   }
 
   static async getAll() {
-    const query = 'SELECT * FROM products ORDER BY ID DESC';
-
     try {
-      const result = await pool.query(query);
-      return result.rows;
+      const products = await prisma.product.findMany({
+        orderBy: {
+          id: 'desc',
+        },
+      });
+      return products;
     } catch (error) {
       throw error;
     }
   }
-
+  
+  
   static async getById(id) {
-    const query = 'SELECT * FROM products WHERE id = $1';
-    const values = [id];
-
     try {
-      const result = await pool.query(query, values);
-      return result.rows[0];
+      const product = await prisma.product.findUnique({
+        where: { id },
+      });
+      return product;
     } catch (error) {
       throw error;
     }
   }
 
   static async update(id, updates) {
-    const query = 'UPDATE products SET name = $1, description = $2, price = $3 WHERE id = $4';
-    const values = [updates.name, updates.description, updates.price, id];
-
     try {
-      await pool.query(query, values);
+      await prisma.product.update({
+        where: { id },
+        data: updates,
+      });
     } catch (error) {
       throw error;
     }
   }
 
   static async delete(id) {
-    const query = 'DELETE FROM products WHERE id = $1';
-    const values = [id];
-
     try {
-      await pool.query(query, values);
+      await prisma.product.delete({
+        where: { id },
+      });
     } catch (error) {
       throw error;
     }

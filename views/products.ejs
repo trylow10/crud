@@ -1,13 +1,21 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <title>Home</title>
-</head>
-<body>
-  <h1>Welcome <%= user.username %>!</h1>
-  <% if (user.role === 'admin') { %>
-    <a href="/add-product">Add Product</a>
-  <% } %>
-  <a href="/logout">Logout</a>
-</body>
+  <head>
+ <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <h1>Welcome <%= user.username %>!</h1>
+    <% if (user.role === 'admin') { %>
+      <a href="/api/products/adminproduct">Admin page</a>
+      <% } %>      
+      <h2> All Products </h2>
+      <ul>
+      <% products.forEach(product => { %>
+        <li>
+          <span><%= product.name %></span> -
+          <%= product.description %> - $<%= product.price %>
+        </li>
+      <% }) %>
+    </ul>
+    <a href="/api/auth/logout">Logout</a>
+  </body>
 </html>

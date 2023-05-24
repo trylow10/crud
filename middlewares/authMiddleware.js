@@ -1,17 +1,19 @@
 const jwt = require('jsonwebtoken');
-const config = require('../config');
-
+require('dotenv').config();
 
 const authorizeRole = (role) => {
   return (req, res, next) => {
-    // Check if the authenticated user's role matches the required role
+    
+    const userId = req.user.id;
     if (req.user.role === role) {
-      next(); // Role is authorized, proceed to the next middleware or route handler
+      req.userId = userId; 
+      next(); 
     } else {
-      res.status(401).json({ message: 'Unauthorized' }); // Role is not authorized
+      res.status(401).json({ message: 'Unauthorized' }); 
     }
-  };  
+  };
 };
+
 
 const authenticateToken = (req, res, next) => {
   let token;
@@ -27,7 +29,7 @@ const authenticateToken = (req, res, next) => {
     return res?.status(401).json({ message: 'Authentication token is missing' });
   }
   try {
-    const decodedToken = jwt.verify(token, config.jwtSecret);
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decodedToken;
     next();
   } catch (error) {
@@ -35,11 +37,11 @@ const authenticateToken = (req, res, next) => {
   }
 };
 
-const logout = (req, res) => {
-  // Clear the token cookie by setting it to an empty value and expiring it immediately
-  res.cookie('jwt_cookie', '', { expires: new Date(0) });
-  res.status(200).render("home",{ message: 'Logout successful' });
-};
-
+  const logout = (req, res) => {
+    // Clear the token cookie by setting it to an empty value and expiring it immediately
+    res.cookie('jwt_cookie', '', { expires: new Date(0) });
+    res.status(200).render("login", { message: 'Logout successful' });
+  };
+  
 
 module.exports = {authenticateToken,authorizeRole,logout};

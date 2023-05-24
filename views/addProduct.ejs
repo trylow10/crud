@@ -7,9 +7,9 @@
 <body>
   <h1>Add Product</h1>
   <form method="POST" action="/api/products/addproduct" enctype="application/x-www-form-urlencoded">
-    Title <input type="text" name="name"><br>
-    Description <input type="text" name="description"><br>
-    Price<input type="text" name="price"><br>
+    Title <input type="text" name="name" required><br>
+    Description <input type="text" name="description" required><br>
+    Price<input type="text" name="price" required><br>
     <button type="submit" value="add product">add product</button>
   </form>
 </body>
