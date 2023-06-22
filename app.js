@@ -5,6 +5,7 @@ const productController = require('./controller/productController')
 const userController = require('./controller/userController')
 const path = require('path');
 const app = express();
+const prism = require('./prisma/prisma')
 require('dotenv').config()
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());

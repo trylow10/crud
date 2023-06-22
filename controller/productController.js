@@ -77,7 +77,8 @@ exports.createProduct = async (req, res) => {
   const product = {
     name: req.body.name,
     description: req.body.description,
-    price: parseFloat(req.body.price)
+    price: parseFloat(req.body.price),
+    image: req?.file?.filename
   };
   try {
     const newProduct = await prisma.product.create({ data: product });
@@ -93,7 +94,9 @@ exports.updateProduct = async (req, res) => {
   const updates = {
     name: req.body.name,
     description: req.body.description,
-    price: parseFloat(req.body.price)
+    price: parseFloat(req.body.price),
+    image: req.file.filename
+
   };
 
   try {

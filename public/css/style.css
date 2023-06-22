@@ -39,51 +39,7 @@ h1 {
   text-align: center;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
 
-li {
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-li:hover {
-  transform: scale(1.02);
-  transition: transform 0.2s ease-in-out;
-}
-
-li:before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  display: inline-block;
-  margin-right: 5px;
-  background-color: #333;
-  border-radius: 50%;
-}
-
-li span {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 5px;
-}
-
-li .price {
-  display: block;
-  margin-bottom: 5px;
-  margin-top: auto;
-}
 
 form1 {
   margin: 20px;
@@ -94,6 +50,25 @@ form1 {
 
 input[type="text"],
 input[type="password"],
+input[type="file"] {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 200px;
+  margin-left: 500px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+/* input[type="file"]:focus {
+  outline: none;
+  box-shadow: 0 0 3px #3498db;
+}
+ */
+
+
 select {
   display: block;
   margin-bottom: 10px;
@@ -127,6 +102,14 @@ select {
   gap: 8px;
   align-items: center;
 }
+.table td img {
+  width: 50px; /* Adjust the width as needed */
+  height: 50px; /* Adjust the height as needed */
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
 
 .actions a,
 .actions button {
@@ -134,6 +117,11 @@ select {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-right: 20px; /* Add a right margin of 20px */
+
+}
+.actions button:last-child {
+  margin-right: 0; /* Remove the right margin for the last button */
 }
 
 .actions a {
@@ -147,7 +135,6 @@ select {
   color: #fff;
 }
 
-
 button {
   background-color: #4caf50;
   color: #fff;
@@ -155,12 +142,12 @@ button {
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  margin-left: 500px;
 }
 
 button:hover {
   background-color: #45a049;
 }
+
 
 /* Media Queries */
 
@@ -172,6 +159,25 @@ button:hover {
 
   input[type="text"],
   input[type="password"],
+  
+  input[type="file"] {
+    display: block;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 200px;
+    margin-left: 500px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    color: #333;
+  }
+  
+  input[type="file"]:focus {
+    outline: none;
+    box-shadow: 0 0 3px #3498db;
+  }
+  
+
   select {
     width: 100%;
     margin-left: 0;
@@ -180,6 +186,7 @@ button:hover {
   button {
     margin-left: 0;
   }
+
 }
 
 @media (max-width: 480px) {

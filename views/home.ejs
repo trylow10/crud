@@ -1,19 +1,23 @@
 <html>
   <head>
- <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/product.css">
+ 
   </head>
   <body>
     <h1> Home Page </h1>
-    <a href="/login">login</a>
+    <a href="/login">Login</a>
     <a href="/register">Register</a>
-    <ul>
+
+    <div class="grid-container">
       <% products.forEach(product => { %>
-        <li>
-          <span><%= product.name %></span> -
-          <%= product.description %> - $<%= product.price %>
-        </li>
+        <div class="product-card">
+          <img src="/uploads/<%= product.image %>" alt="<%= product.name %>">
+          <h3><%= product.name %></h3>
+          <p><%= product.description %> - $<%= product.price %></p>
+          <button>Add to Cart</button>
+        </div>
       <% }) %>
-    </ul>
+    </div>
 
   </body>
 </html>
